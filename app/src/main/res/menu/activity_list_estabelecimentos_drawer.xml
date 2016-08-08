@@ -3,15 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/menu_list_estabelecimentos_nav_camera"
             android:icon="@drawable/ic_menu_camera"
             android:title="Inicio" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/menu_list_estabelecimentos_metodo_de_busca"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/menu_list_estabelecimentos_meus_pets"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Meus Pets" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/menu_list_estabelecimentos_minhas_avaliacoes"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Minhas Avaliações" />
         <!--<item
