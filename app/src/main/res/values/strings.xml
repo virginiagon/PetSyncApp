@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">PetSync</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_search_method">SearchMethodActivity</string>
-    <string name="title_activity_establishments">EstablishmentsActivity</string>
+    <string name="title_activity_search_method">Buscar por</string>
+    <string name="title_activity_establishments">Estabelecimentos</string>
+    <string name="title_activity_informar_cep_formulario">Informe o CEP</string>
+    <string name="title_activity_menu_visitante">MenuVisitanteActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_list_estabelecimentos">ListEstabelecimentosActivity</string>
 </resources>

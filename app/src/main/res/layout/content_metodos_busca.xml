@@ -10,22 +10,23 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/metodos_busca_localizacao_atual"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Buscar por GPS"
-        android:textSize="24dp"
+        android:text="Localização Atual"
+        android:textSize="22dp"
         android:textAlignment="center"
         android:background="@color/colorGreen"
         android:textColor="#FFFFFF" />
 
     <Button
+        android:id="@+id/metodos_busca_cep"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="Informar CEP"
-        android:id="@+id/button"
         android:layout_marginTop="20dp"
         android:background="@color/colorDefault"
-        android:textSize="24dp"
+        android:textSize="22dp"
         android:textAlignment="center"
         android:textColor="@color/colorGreen"
         android:allowUndo="false" />
@@ -42,8 +43,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.petsync.petsync.SearchMethodActivity"
-    tools:showIn="@layout/activity_search_method">
+    tools:context="br.com.petsync.petsync.MetodosBuscaActivity"
+    tools:showIn="@layout/activity_metodos_busca">
 
     <Button
         android:layout_width="match_parent"
