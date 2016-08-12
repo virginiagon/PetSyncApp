@@ -17,8 +17,7 @@
         <activity
             android:name=".MetodosBuscaActivity"
             android:label="@string/title_activity_search_method"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FormularioInformarCepActivity"
             android:label="@string/title_activity_informar_cep_formulario"
@@ -27,14 +26,13 @@
             android:name=".ListEstabelecimentosActivity"
             android:label="@string/title_activity_list_estabelecimentos"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".FormularioCadastroUsuarioActivity"></activity>
     </application>
 
 </manifest>

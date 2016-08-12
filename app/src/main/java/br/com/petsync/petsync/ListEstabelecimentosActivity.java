@@ -2,10 +2,12 @@ package br.com.petsync.petsync;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -133,17 +135,18 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_list_estab_inicio) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } /*else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_list_estab_meus_pets) {
+            //Lista de Pets
+        } else if (id == R.id.nav_list_estab_avaliacoes) {
+            //Avaliações que o cliente fez aos estabelecimentos
+        } else if (id == R.id.nav_list_estab_login) {
+            //Formulário de Login
+        } else if (id == R.id.nav_list_estab_cadastrar) {
+            Intent cadastroUsuario = new Intent(this, FormularioCadastroUsuarioActivity.class);
+            startActivity(cadastroUsuario);
+        } /*else if (id == R.id.nav_send) {
 
         }*/
 

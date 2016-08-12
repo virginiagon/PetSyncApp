@@ -9,27 +9,34 @@
     android:paddingBottom="16dp"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/metodos_busca_localizacao_atual"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Localização Atual"
-        android:textSize="22dp"
-        android:textAlignment="center"
-        android:background="@color/colorGreen"
-        android:textColor="#FFFFFF" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/metodos_busca_cep"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Informar CEP"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorDefault"
-        android:textSize="22dp"
-        android:textAlignment="center"
-        android:textColor="@color/colorGreen"
-        android:allowUndo="false" />
+        <Button
+            android:id="@+id/metodos_busca_localizacao_atual"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Localização Atual"
+            android:textSize="22dp"
+            android:textAlignment="center"
+            android:background="@color/colorGreen"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/metodos_busca_cep"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Informar CEP"
+            android:background="@color/colorDefault"
+            android:textSize="22dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorGreen"
+            android:allowUndo="false"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
 
