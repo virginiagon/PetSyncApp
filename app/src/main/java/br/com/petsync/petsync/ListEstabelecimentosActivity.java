@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,7 +22,7 @@ import java.util.List;
 import br.com.petsync.petsync.adapter.EstabelecimentoAdapter;
 import br.com.petsync.petsync.converter.EstabelecimentoConverter;
 import br.com.petsync.petsync.model.Estabelecimento;
-import br.com.petsync.petsync.webservices.WebClientEstablishments;
+import br.com.petsync.petsync.webservices.WebClient;
 
 public class ListEstabelecimentosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -91,7 +88,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         @Override
         protected Object doInBackground(Object[] params) {
 
-            WebClientEstablishments cliente = new WebClientEstablishments();
+            WebClient cliente = new WebClient();
             String resposta = cliente.getJsonFromUrl("http://www.petsync.com.br/api/estabelecimentos");
 
             EstabelecimentoConverter conversor = new EstabelecimentoConverter();

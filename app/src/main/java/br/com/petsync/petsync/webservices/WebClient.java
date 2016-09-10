@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * Created by Virgínia on 11/07/2016.
  */
-public class WebClientEstablishments {
+public class WebClient {
 
     private String resposta = null;
 
@@ -27,8 +27,6 @@ public class WebClientEstablishments {
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            //connection.setRequestMethod("GET");
-            //Object content = connection.getContent();
             connection.setRequestProperty("Accept", "application/json");
             connection.connect();
 
@@ -46,28 +44,6 @@ public class WebClientEstablishments {
             inputStream.close();
             connection.disconnect();
 
-            /*URL url = new URL(urlString);
-            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
-
-            //int codigoResposta;
-            InputStream is;
-
-            conexao.setRequestMethod("GET");
-            conexao.setReadTimeout(15000);
-            conexao.setConnectTimeout(15000);
-            conexao.connect();
-
-            //codigoResposta = conexao.getResponseCode();
-            //if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
-                is = conexao.getInputStream();
-            //}else{
-            //    is = conexao.getErrorStream();
-            //}
-
-            retorno = converterInputStreamToString(is);
-            is.close();
-            conexao.disconnect();*/
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -80,25 +56,13 @@ public class WebClientEstablishments {
     private static String converterInputStreamToString(InputStream inputStream){
         StringBuffer buffer = new StringBuffer();
         try{
-
             BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"), 8);
-
 
             String line = null;
             while ((line = bReader.readLine()) != null) {
                 buffer.append(line + "\n");
             }
             inputStream.close();
-
-            /*BufferedReader br;
-            String linha;
-
-            br = new BufferedReader(new InputStreamReader(is));
-            while((linha = br.readLine())!=null){
-                buffer.append(linha);
-            }
-
-            br.close();*/
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -121,13 +85,11 @@ public class WebClientEstablishments {
 
             connection.connect();
 
-            //Scanner scanner = new Scanner(connection.getInputStream());
             this.resposta = converterInputStreamToString(connection.getInputStream());
 
             //codigo do response.
             int responseCode = connection.getResponseCode();
 
-            //return this.resposta;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -15,7 +15,7 @@ import br.com.petsync.petsync.adapter.ServicoAdaptar;
 import br.com.petsync.petsync.converter.ServicoConverter;
 import br.com.petsync.petsync.model.Estabelecimento;
 import br.com.petsync.petsync.model.Servico;
-import br.com.petsync.petsync.webservices.WebClientEstablishments;
+import br.com.petsync.petsync.webservices.WebClient;
 
 public class DetalheEstabelecimentoActivity extends AppCompatActivity {
 
@@ -83,7 +83,7 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] params) {
 
-            WebClientEstablishments cliente = new WebClientEstablishments();
+            WebClient cliente = new WebClient();
             String resposta = cliente.getJsonFromUrl("http://www.petsync.com.br/api/servicos");
 
             ServicoConverter conversor = new ServicoConverter();

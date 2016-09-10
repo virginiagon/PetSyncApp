@@ -9,7 +9,7 @@ import br.com.petsync.petsync.converter.ClienteConverter;
 import br.com.petsync.petsync.converter.UsuarioConverter;
 import br.com.petsync.petsync.model.Cliente;
 import br.com.petsync.petsync.model.Usuario;
-import br.com.petsync.petsync.webservices.WebClientEstablishments;
+import br.com.petsync.petsync.webservices.WebClient;
 
 /**
  * Created by Virgínia on 14/08/2016.
@@ -38,7 +38,7 @@ public class CadastroUsuarioTask extends AsyncTask {
         ClienteConverter conversor = new ClienteConverter();
         String json = conversor.converteParaJson(this.cliente);
 
-        WebClientEstablishments client = new WebClientEstablishments();
+        WebClient client = new WebClient();
         String resposta = client.post(json, "http://www.petsync.com.br/api/clientes");
 
         if(resposta != null) {
@@ -51,7 +51,7 @@ public class CadastroUsuarioTask extends AsyncTask {
 
             String jsonUser = converteUsuario.converteParaJson(this.usuario);
 
-            WebClientEstablishments user = new WebClientEstablishments();
+            WebClient user = new WebClient();
             String response = user.post(jsonUser, "http://www.petsync.com.br/api/usuarios");
         }
         return resposta;
