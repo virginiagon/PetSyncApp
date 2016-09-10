@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -29,7 +30,7 @@ import br.com.petsync.petsync.webservices.WebClientEstablishments;
 public class ListEstabelecimentosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ListView listView;
+    private ListView listEstabelecimentos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,17 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listView = (ListView) findViewById(R.id.lista_estabelcimentos);
+        listEstabelecimentos = (ListView) findViewById(R.id.lista_estabelcimentos);
+
+        listEstabelecimentos.setOnItemClickListener(new AdapterView.OnItemClickListener () {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Estabelecimento estabelecimento = (Estabelecimento) listEstabelecimentos.getItemAtPosition(position);
+                Intent intentVaiParaDetalhe = new Intent(ListEstabelecimentosActivity.this, DetalheEstabelecimentoActivity.class);
+                intentVaiParaDetalhe.putExtra("estabelecimento", estabelecimento);
+                startActivity(intentVaiParaDetalhe);
+            }
+        });
 
         //Menu DrawerLayout
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -93,9 +104,9 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         protected void onPostExecute(Object result) {
             this.dialog.dismiss();
             EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(this.context, this.estabelecimentoList);
-            listView.setAdapter(adapter);
+            listEstabelecimentos.setAdapter(adapter);
         }
-    }
+    } //fim classe AsyncTask
 
     @Override
     public void onBackPressed() {

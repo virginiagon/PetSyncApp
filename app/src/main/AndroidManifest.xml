@@ -32,7 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormularioCadastroUsuarioActivity"></activity>
+        <activity android:name=".FormularioCadastroUsuarioActivity" />
+        <activity android:name=".DetalheEstabelecimentoActivity"></activity>
     </application>
 
 </manifest>

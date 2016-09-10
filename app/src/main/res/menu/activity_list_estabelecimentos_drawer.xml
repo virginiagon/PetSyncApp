@@ -4,15 +4,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_list_estab_inicio"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home_black_48dp"
             android:title="Inicio" />
         <item
             android:id="@+id/nav_list_estab_meus_pets"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_pets_black_48dp"
             android:title="Meus Pets" />
         <item
             android:id="@+id/nav_list_estab_avaliacoes"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_comment_black_48dp"
             android:title="Minhas Avaliações" />
         <!--<item
             android:id="@+id/nav_manage"
@@ -28,7 +28,7 @@
                 android:title="Login" />
             <item
                 android:id="@+id/nav_list_estab_cadastrar"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_enter_the_app_black_48dp"
                 android:title="Cadastrar" />
         </menu>
     </item>

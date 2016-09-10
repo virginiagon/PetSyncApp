@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.petsync.petsync.FormularioCadastroUsuarioActivity">
+    tools:context="br.com.petsync.petsync.FormularioCadastroUsuarioActivity"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,6 +35,18 @@
             android:hint="Cep"/>
 
         <EditText
+            android:id="@+id/cadastro_usuario_cidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cidade"/>
+
+        <EditText
+            android:id="@+id/cadastro_usuario_estado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Estado"/>
+
+        <EditText
             android:id="@+id/cadastro_usuario_telefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +57,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/Email"
+            android:id="@+id/cadastro_usuario_email"
             android:layout_gravity="center_horizontal"
             android:hint="E-mail"/>
 
@@ -53,7 +66,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/senha"
+            android:id="@+id/cadastro_usuario_senha"
             android:layout_gravity="center_horizontal"
             android:hint="Senha" />
 
