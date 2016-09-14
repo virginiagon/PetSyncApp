@@ -25,7 +25,7 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhe_estabelecimento_old);
+        setContentView(R.layout.activity_detalhe_estabelecimento);
 
         Intent intent = getIntent();
         estabelecimento = (Estabelecimento) intent.getSerializableExtra("estabelecimento");
@@ -63,6 +63,7 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
         loadServicos();
     }
 
+    //Classe que busca os servicos
     public class SearchServicosTask extends AsyncTask {
 
         private Context context;

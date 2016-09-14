@@ -146,7 +146,8 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         if (id == R.id.nav_list_estab_inicio) {
             // Handle the camera action
         } else if (id == R.id.nav_list_estab_meus_pets) {
-            //Lista de Pets
+            Intent listaAnimais = new Intent(this, ListaAnimaisActivity.class);
+            startActivity(listaAnimais);
         } else if (id == R.id.nav_list_estab_avaliacoes) {
             //Avaliações que o cliente fez aos estabelecimentos
         } else if (id == R.id.nav_list_estab_login) {

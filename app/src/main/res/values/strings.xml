@@ -8,8 +8,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_list_estabelecimentos">ListEstabelecimentosActivity</string>
+    <string name="title_activity_list_estabelecimentos">Estabelecimentos</string>
+    <string name="title_activity_lista_animais">Meus Pets</string>
+    <string name="title_activity_formulario_cadastro_usuario">Cadastro</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
