@@ -15,8 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 import br.com.petsync.petsync.adapter.EstabelecimentoAdapter;
@@ -29,6 +33,12 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
 
     private ListView listEstabelecimentos;
 
+    //User session manager class
+    UserSessionManager session;
+
+    //button logout
+    Button btnLogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +46,25 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Session class instance
+        session = new UserSessionManager(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(),
+                "User Login Status: " + session.isUserLoggedIn(),
+                Toast.LENGTH_LONG).show();
+
+        //Check user login (this is the important point)
+        //If user is not logged in, this will redirect user to LoginActivity
+        //and finish current activity from activity stack.
+        if(session.checkLogin())
+            finish();
+
+        //get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+        String name = user.get(UserSessionManager.KEY_NAME);
+        String email = user.get(UserSessionManager.KEY_EMAIL);
+
+        //lista estabelecimentos.
         listEstabelecimentos = (ListView) findViewById(R.id.lista_estabelcimentos);
 
         listEstabelecimentos.setOnItemClickListener(new AdapterView.OnItemClickListener () {
@@ -57,6 +86,12 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        TextView lblName = (TextView)header.findViewById(R.id.nav_header_nome_cliente);
+        TextView lblEmail = (TextView)header.findViewById(R.id.nav_header_email);
+        lblName.setText(name);
+        lblEmail.setText(email);
+
     }
 
     private void loadEstablishments() {
@@ -150,8 +185,8 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
             startActivity(listaAnimais);
         } else if (id == R.id.nav_list_estab_avaliacoes) {
             //Avaliações que o cliente fez aos estabelecimentos
-        } else if (id == R.id.nav_list_estab_login) {
-            //Formulário de Login
+        } else if (id == R.id.nav_list_estab_logout) {
+            session.logoutUser();
         } else if (id == R.id.nav_list_estab_cadastrar) {
             Intent cadastroUsuario = new Intent(this, FormularioCadastroUsuarioActivity.class);
             startActivity(cadastroUsuario);

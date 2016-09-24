@@ -9,7 +9,7 @@ import java.util.Date;
 public class Animal {
 
     private Long id;
-    private Cliente cliente;
+    private Long cliente;
     private String nome;
     private String raca;
     private Date dataNascimento;
@@ -27,11 +27,11 @@ public class Animal {
         this.id = id;
     }
 
-    public Cliente getCliente() {
+    public Long getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Long cliente) {
         this.cliente = cliente;
     }
 

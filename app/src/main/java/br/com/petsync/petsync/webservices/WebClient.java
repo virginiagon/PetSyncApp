@@ -32,10 +32,8 @@ public class WebClient {
 
             int responseCode = connection.getResponseCode();
 
-
             if(responseCode < HttpURLConnection.HTTP_BAD_REQUEST) {
                 inputStream = connection.getInputStream();
-
             } else {
                 inputStream = connection.getErrorStream();
             }

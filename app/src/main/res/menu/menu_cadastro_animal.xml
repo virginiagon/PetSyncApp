@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.petsync.petsync.FormularioCadastroUsuarioActivity">
+
+    <item android:id="@+id/menu_formulario_animal_ok"
+        android:title="OK"
+        android:icon="@drawable/ic_confirmar"
+        app:showAsAction="always"></item>
+
+
+</menu>

@@ -7,6 +7,7 @@
     <color name="colorPrimaryDark">#519548</color>
     <color name="colorAccent">#434242</color>
     <color name="colorDefault">#EEEEEE</color>
-    <color name="colorGreen">#85be48</color>
+    <color name="colorGreen">#519548</color>
+    <!--<color name="colorGreen">#85be48</color>-->
     <!--<color name="colorDarkGreen">#4b890f</color> -->
 </resources>

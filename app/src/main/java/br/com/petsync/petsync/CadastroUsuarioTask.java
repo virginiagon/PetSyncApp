@@ -39,9 +39,11 @@ public class CadastroUsuarioTask extends AsyncTask {
         String json = conversor.converteParaJson(this.cliente);
 
         WebClient client = new WebClient();
+        //cadastra os clientes
         String resposta = client.post(json, "http://www.petsync.com.br/api/clientes");
 
         if(resposta != null) {
+            //Após cadastrar o cliente, pega o id do cliente para cadastrar o usuário
             UsuarioConverter converteUsuario = new UsuarioConverter();
             Long idCliente = converteUsuario.parseJsonOneObject(resposta);
 
@@ -51,6 +53,7 @@ public class CadastroUsuarioTask extends AsyncTask {
 
             String jsonUser = converteUsuario.converteParaJson(this.usuario);
 
+            //cadastra o user
             WebClient user = new WebClient();
             String response = user.post(jsonUser, "http://www.petsync.com.br/api/usuarios");
         }

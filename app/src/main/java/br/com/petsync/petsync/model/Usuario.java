@@ -45,6 +45,12 @@ public class Usuario {
         this.senha = criptografaSenhaMD5(senha);
     }
 
+    public void setSenha(String senha, Boolean criptografa) {
+        if(!criptografa) {
+            this.senha = senha;
+        }
+    }
+
     public Boolean getStatus() {
         return status;
     }
