@@ -3,6 +3,8 @@ package br.com.petsync.petsync;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,18 +52,8 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Session class instance
-        session = new UserSessionManager(getApplicationContext());
-
-        Toast.makeText(getApplicationContext(),
-                "User Login Status: " + session.isUserLoggedIn(),
-                Toast.LENGTH_LONG).show();
-
-        //Check user login (this is the important point)
-        //If user is not logged in, this will redirect user to LoginActivity
-        //and finish current activity from activity stack.
-        if(session.checkLogin())
-            finish();
+        //Cria a sessão
+        createSession();
 
         //get user data from session
         HashMap<String, String> user = session.getUserDetails();
@@ -91,6 +87,45 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         TextView lblEmail = (TextView)header.findViewById(R.id.nav_header_email);
         lblName.setText(name);
         lblEmail.setText(email);
+
+
+    }
+
+    /*public double calculateKM() {
+        Geocoder geocoder = new Geocoder(this);
+        double distance = 0;
+        try {
+            List<Address> from = geocoder.getFromLocationName("Rua Edward Simões 267, Vila Industrial, São José dos Campos", 1);
+            List<Address> to = geocoder.getFromLocationName("Avenida Andromeda 433, Avenida Andromeda, São José dos Campos", 1);
+
+
+            if(!from.isEmpty()) {
+                LatLng posicaoInicial = new LatLng(from.get(0).getLatitude(), from.get(0).getLongitude());
+                LatLng posicaoFinal = new LatLng(to.get(0).getLatitude(), to.get(0).getLongitude());
+
+                distance = SphericalUtil.computeDistanceBetween(posicaoInicial, posicaoFinal);
+                Toast.makeText(this,String.valueOf(distance+" Meters"),Toast.LENGTH_SHORT).show();
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return distance;
+    }*/
+
+    private void createSession() {
+        //Session class instance
+        session = new UserSessionManager(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(),
+                "User Login Status: " + session.isUserLoggedIn(),
+                Toast.LENGTH_LONG).show();
+
+        //Check user login (this is the important point)
+        //If user is not logged in, this will redirect user to LoginActivity
+        //and finish current activity from activity stack.
+        if(session.checkLogin())
+            finish();
 
     }
 

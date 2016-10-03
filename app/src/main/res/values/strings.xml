@@ -11,5 +11,6 @@
     <string name="title_activity_list_estabelecimentos">Estabelecimentos</string>
     <string name="title_activity_lista_animais">Meus Pets</string>
     <string name="title_activity_formulario_cadastro_usuario">Cadastro</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
