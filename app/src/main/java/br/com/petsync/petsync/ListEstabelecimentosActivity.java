@@ -42,9 +42,6 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
     //User session manager class
     UserSessionManager session;
 
-    //button logout
-    Button btnLogout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,8 +84,6 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         TextView lblEmail = (TextView)header.findViewById(R.id.nav_header_email);
         lblName.setText(name);
         lblEmail.setText(email);
-
-
     }
 
     /*public double calculateKM() {
@@ -113,6 +108,9 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         return distance;
     }*/
 
+    /**
+     * Metodo que cria a sessão.
+     */
     private void createSession() {
         //Session class instance
         session = new UserSessionManager(getApplicationContext());
@@ -129,6 +127,9 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Método que chama a Classe de task para buscar os estabelecimentos.
+     */
     private void loadEstablishments() {
         new SearchEstablishmentsTask(this).execute();
     }
@@ -138,42 +139,6 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         super.onResume();
         loadEstablishments();
     }
-
-    //Class AsyncTask
-    public class SearchEstablishmentsTask extends AsyncTask {
-
-        private Context context;
-        private ProgressDialog dialog;
-        private List<Estabelecimento> estabelecimentoList;
-
-        public SearchEstablishmentsTask(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            this.dialog = ProgressDialog.show(context, "Aguarde", "Buscando estabelecimentos...", true, true);
-        }
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-
-            WebClient cliente = new WebClient();
-            String resposta = cliente.getJsonFromUrl("http://www.petsync.com.br/api/estabelecimentos");
-
-            EstabelecimentoConverter conversor = new EstabelecimentoConverter();
-            this.estabelecimentoList = conversor.ParseJSON(resposta);
-
-            return this.estabelecimentoList;
-        }
-
-        @Override
-        protected void onPostExecute(Object result) {
-            this.dialog.dismiss();
-            EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(this.context, this.estabelecimentoList);
-            listEstabelecimentos.setAdapter(adapter);
-        }
-    } //fim classe AsyncTask
 
     @Override
     public void onBackPressed() {
@@ -233,4 +198,40 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    //Class AsyncTask
+    public class SearchEstablishmentsTask extends AsyncTask {
+
+        private Context context;
+        private ProgressDialog dialog;
+        private List<Estabelecimento> estabelecimentoList;
+
+        public SearchEstablishmentsTask(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            this.dialog = ProgressDialog.show(context, "Aguarde", "Buscando estabelecimentos...", true, true);
+        }
+
+        @Override
+        protected Object doInBackground(Object[] params) {
+
+            WebClient cliente = new WebClient();
+            String resposta = cliente.getJsonFromUrl("http://www.petsync.com.br/api/estabelecimentos");
+
+            EstabelecimentoConverter conversor = new EstabelecimentoConverter();
+            this.estabelecimentoList = conversor.ParseJSON(resposta);
+
+            return this.estabelecimentoList;
+        }
+
+        @Override
+        protected void onPostExecute(Object result) {
+            this.dialog.dismiss();
+            EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(this.context, this.estabelecimentoList);
+            listEstabelecimentos.setAdapter(adapter);
+        }
+    } //fim classe AsyncTask
 }

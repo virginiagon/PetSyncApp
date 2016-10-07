@@ -44,7 +44,7 @@ public class ServicoConverter {
                         servico.setId(object.getLong("id"));
                         servico.setNome(object.getString("nome"));
                         servico.setDescricao(object.getString("descricao"));
-                        //servico.setValor(object.getString("valor"));
+                        servico.setValor(object.getDouble("valor"));
 
                         // adding estabelecimento to estabelecimento list
                         servicoList.add(servico);

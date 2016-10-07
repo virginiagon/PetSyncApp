@@ -1,12 +1,13 @@
 package br.com.petsync.petsync.model;
 
+import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
 
 /**
  * Created by Virgínia on 12/09/2016.
  */
-public class Animal {
+public class Animal implements Serializable {
 
     private Long id;
     private Long cliente;

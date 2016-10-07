@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -54,9 +55,21 @@ public class ListaAnimaisActivity extends AppCompatActivity {
                 startActivity(intentVaiProForm);
             }
         });
+
+        listaAnimais.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Animal animal = (Animal) listaAnimais.getItemAtPosition(position);
+                Intent formularioCadastroAnimal = new Intent(ListaAnimaisActivity.this, FormularioCadastroAnimalActivity.class);
+                formularioCadastroAnimal.putExtra("animal", animal);
+                startActivity(formularioCadastroAnimal);
+            }
+        });
     }
 
-
+    /**
+     * Método que chama a classe de task
+     */
     private void loadAnimais() {
         new SearchAnimaisTask(this, this.clienteId).execute();
     }
@@ -103,5 +116,5 @@ public class ListaAnimaisActivity extends AppCompatActivity {
             AnimalAdapter adapter = new AnimalAdapter(context, this.animaisList);
             listaAnimais.setAdapter(adapter);
         }
-    }
+    }//fim da classe AsyncTask
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import br.com.petsync.petsync.R;
@@ -58,8 +59,9 @@ public class ServicoAdaptar extends BaseAdapter {
         TextView nome = (TextView) view.findViewById(R.id.servico_item_nome);
         nome.setText(servico.getNome());
 
-        /*TextView valor = (TextView) view.findViewById(R.id.servico_item_valor);
-        valor.setText((int) servico.getValor());*/
+        TextView valor = (TextView) view.findViewById(R.id.servico_item_valor);
+        valor.setText("R$ " + servico.getValor());
+        /*valor.setText((int) servico.getValor());*/
 
         return view;
     }
