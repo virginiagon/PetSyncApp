@@ -30,7 +30,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import br.com.petsync.petsync.adapter.EstabelecimentoAdapter;
+import br.com.petsync.petsync.converter.ClienteConverter;
 import br.com.petsync.petsync.converter.EstabelecimentoConverter;
+import br.com.petsync.petsync.model.Cliente;
 import br.com.petsync.petsync.model.Estabelecimento;
 import br.com.petsync.petsync.webservices.WebClient;
 
@@ -41,6 +43,8 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
 
     //User session manager class
     UserSessionManager session;
+
+    private Long clienteId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         HashMap<String, String> user = session.getUserDetails();
         String name = user.get(UserSessionManager.KEY_NAME);
         String email = user.get(UserSessionManager.KEY_EMAIL);
+        this.clienteId = Long.valueOf(user.get(UserSessionManager.KEY_ID));
 
         //lista estabelecimentos.
         listEstabelecimentos = (ListView) findViewById(R.id.lista_estabelcimentos);
@@ -86,27 +91,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         lblEmail.setText(email);
     }
 
-    /*public double calculateKM() {
-        Geocoder geocoder = new Geocoder(this);
-        double distance = 0;
-        try {
-            List<Address> from = geocoder.getFromLocationName("Rua Edward Simões 267, Vila Industrial, São José dos Campos", 1);
-            List<Address> to = geocoder.getFromLocationName("Avenida Andromeda 433, Avenida Andromeda, São José dos Campos", 1);
 
-
-            if(!from.isEmpty()) {
-                LatLng posicaoInicial = new LatLng(from.get(0).getLatitude(), from.get(0).getLongitude());
-                LatLng posicaoFinal = new LatLng(to.get(0).getLatitude(), to.get(0).getLongitude());
-
-                distance = SphericalUtil.computeDistanceBetween(posicaoInicial, posicaoFinal);
-                Toast.makeText(this,String.valueOf(distance+" Meters"),Toast.LENGTH_SHORT).show();
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return distance;
-    }*/
 
     /**
      * Metodo que cria a sessão.
@@ -131,7 +116,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
      * Método que chama a Classe de task para buscar os estabelecimentos.
      */
     private void loadEstablishments() {
-        new SearchEstablishmentsTask(this).execute();
+        new SearchEstablishmentsTask(this, this.clienteId).execute();
     }
 
     @Override
@@ -205,9 +190,12 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         private Context context;
         private ProgressDialog dialog;
         private List<Estabelecimento> estabelecimentoList;
+        private Long clienteId;
+        private Cliente cliente;
 
-        public SearchEstablishmentsTask(Context context) {
+        public SearchEstablishmentsTask(Context context, Long clienteId) {
             this.context = context;
+            this.clienteId = clienteId;
         }
 
         @Override
@@ -218,11 +206,16 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         @Override
         protected Object doInBackground(Object[] params) {
 
-            WebClient cliente = new WebClient();
-            String resposta = cliente.getJsonFromUrl("http://www.petsync.com.br/api/estabelecimentos");
+            WebClient client = new WebClient();
+            String resposta = client.getJsonFromUrl("http://www.petsync.com.br/api/estabelecimentos");
 
             EstabelecimentoConverter conversor = new EstabelecimentoConverter();
             this.estabelecimentoList = conversor.ParseJSON(resposta);
+
+            WebClient webClient2 = new WebClient();
+            String jsonCliente = webClient2.getJsonFromUrl("http://www.petsync.com.br/api/clientes/" + this.clienteId);
+            ClienteConverter clienteConverter = new ClienteConverter();
+            this.cliente = clienteConverter.parseJsonForOneCliente(jsonCliente);
 
             return this.estabelecimentoList;
         }
@@ -230,7 +223,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Object result) {
             this.dialog.dismiss();
-            EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(this.context, this.estabelecimentoList);
+            EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(this.context, this.estabelecimentoList, this.cliente);
             listEstabelecimentos.setAdapter(adapter);
         }
     } //fim classe AsyncTask

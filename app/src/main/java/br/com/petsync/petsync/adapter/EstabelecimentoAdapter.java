@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
+import br.com.petsync.petsync.MapsUtils;
 import br.com.petsync.petsync.R;
+import br.com.petsync.petsync.model.Cliente;
 import br.com.petsync.petsync.model.Estabelecimento;
 
 /**
@@ -19,11 +22,13 @@ public class EstabelecimentoAdapter extends BaseAdapter {
 
     private final List<Estabelecimento> estabelecimentos;
     private final Context context;
+    private final Cliente cliente;
 
 
-    public EstabelecimentoAdapter(Context context, List<Estabelecimento> estabelecimentos) {
+    public EstabelecimentoAdapter(Context context, List<Estabelecimento> estabelecimentos, Cliente cliente) {
         this.context = context;
         this.estabelecimentos = estabelecimentos;
+        this.cliente = cliente;
     }
 
     @Override
@@ -59,6 +64,13 @@ public class EstabelecimentoAdapter extends BaseAdapter {
 
         TextView telefone = (TextView) view.findViewById(R.id.item_telefone);
         telefone.setText(estabelecimento.getPhone());
+
+        MapsUtils mapsUtils = new MapsUtils(this.context);
+        double aux = mapsUtils.calculateKM(this.cliente, estabelecimento);
+
+        DecimalFormat formato = new DecimalFormat("#,##");
+        TextView km = (TextView) view.findViewById(R.id.item_km);
+        km.setText(Double.valueOf(formato.format(aux)) + " KM");
 
         return view;
     }

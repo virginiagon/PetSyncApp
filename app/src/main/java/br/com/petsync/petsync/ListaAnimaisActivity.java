@@ -101,8 +101,8 @@ public class ListaAnimaisActivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] params) {
 
-            WebClient cliente = new WebClient();
-            String resposta = cliente.getJsonFromUrl("http://www.petsync.com.br/api/animais");
+            WebClient client = new WebClient();
+            String resposta = client.getJsonFromUrl("http://www.petsync.com.br/api/animais");
 
             AnimalConverter conversor = new AnimalConverter();
             this.animaisList = conversor.ParseJSON(resposta, this.clienteId);
