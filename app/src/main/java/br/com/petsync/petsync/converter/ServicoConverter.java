@@ -39,12 +39,15 @@ public class ServicoConverter {
 
                     Long idEstabelecimento = object.getLong("estabelecimento_id");
 
-                    if(idEstabelecimento.longValue() == estabelecimento.getId().longValue()) {
+                    if(idEstabelecimento.longValue() == estabelecimento.getId().longValue() && object.getLong("status") == 1) {
                         Servico servico = new Servico();
                         servico.setId(object.getLong("id"));
                         servico.setNome(object.getString("nome"));
                         servico.setDescricao(object.getString("descricao"));
                         servico.setValor(object.getDouble("valor"));
+                        servico.setEstabelecimento(estabelecimento);
+                        Boolean status = object.getLong("status") == 1 ? true : false;
+                        servico.setStatus(status);
 
                         // adding estabelecimento to estabelecimento list
                         servicoList.add(servico);

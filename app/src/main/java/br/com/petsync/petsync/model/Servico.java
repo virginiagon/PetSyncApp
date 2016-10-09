@@ -1,9 +1,11 @@
 package br.com.petsync.petsync.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Virgínia on 05/09/2016.
  */
-public class Servico {
+public class Servico implements Serializable {
 
     private Long id;
     private Estabelecimento estabelecimento;

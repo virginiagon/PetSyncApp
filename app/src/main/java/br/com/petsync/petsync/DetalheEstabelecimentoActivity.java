@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
@@ -31,6 +33,16 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
         estabelecimento = (Estabelecimento) intent.getSerializableExtra("estabelecimento");
 
         listServicos = (ListView) findViewById(R.id.detalhe_lista_servicos);
+
+        listServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Servico servico = (Servico) listServicos.getItemAtPosition(position);
+                Intent detalheServico = new Intent(DetalheEstabelecimentoActivity.this, DetalheServicoActivity.class);
+                detalheServico.putExtra("servico", servico);
+                startActivity(detalheServico);
+            }
+        });
 
         TabHost host = (TabHost) findViewById(R.id.tabHostDetalheEstabelecimento);
         host.setup();

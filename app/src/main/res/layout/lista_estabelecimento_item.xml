@@ -40,13 +40,15 @@
                 android:paddingTop="8dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_km"
                 android:text="KM"
                 android:textSize="16sp"
                 android:paddingLeft="10dp"
-                android:paddingTop="8dp" />
+                android:paddingTop="8dp"
+                android:textStyle="bold"
+                android:gravity="right" />
 
         </LinearLayout>
     </LinearLayout>
