@@ -7,6 +7,9 @@ import android.content.SharedPreferences;
 import java.security.KeyManagementException;
 import java.util.HashMap;
 
+import br.com.petsync.petsync.model.Cliente;
+import br.com.petsync.petsync.model.Usuario;
+
 /**
  * Created by Virgínia on 21/09/2016.
  */
@@ -38,6 +41,14 @@ public class UserSessionManager {
     //Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
 
+    public static final String KEY_ENDERECO = "endereco";
+
+    public static final String KEY_CIDADE = "cidade";
+
+    public static final String KEY_ESTADO = "estado";
+
+    public static final String KEY_CEP = "cep";
+
     //Construtor
     public UserSessionManager(Context context) {
         this.context = context;
@@ -46,18 +57,27 @@ public class UserSessionManager {
     }
 
     //Create login session
-    public void createUserLoginSession(String id, String name, String email) {
+    //public void createUserLoginSession(String id, String name, String email) {
+    public void createUserLoginSession(Cliente cliente, Usuario usuario) {
         //Storing login value as TRUE
         editor.putBoolean(IS_USER_LOGIN, true);
 
         //Storing id in pref
-        editor.putString(KEY_ID, id);
+        editor.putString(KEY_ID, String.valueOf(cliente.getId()));
 
         //Storing name in pref
-        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_NAME, cliente.getNome());
 
         //Storing email in pref
-        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_EMAIL, usuario.getEmail());
+
+        editor.putString(KEY_ENDERECO, cliente.getEndereco());
+
+        editor.putString(KEY_CIDADE, cliente.getCidade());
+
+        editor.putString(KEY_ESTADO, cliente.getEstado());
+
+        editor.putString(KEY_CEP, cliente.getCep());
 
         //commit
         editor.commit();
@@ -103,6 +123,14 @@ public class UserSessionManager {
 
         //user email id
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
+
+        user.put(KEY_ENDERECO, pref.getString(KEY_ENDERECO, null));
+
+        user.put(KEY_CIDADE, pref.getString(KEY_CIDADE, null));
+
+        user.put(KEY_ESTADO, pref.getString(KEY_ESTADO, null));
+
+        user.put(KEY_CEP, pref.getString(KEY_CEP, null));
 
         return user;
     }

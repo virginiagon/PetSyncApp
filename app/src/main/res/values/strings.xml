@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">PetSync</string>
     <string name="action_settings">Settings</string>
+    <string name="action_troca_metodo_busca">Trocar o Metodo de Busca</string>
     <string name="title_activity_search_method">Buscar por</string>
     <string name="title_activity_establishments">Estabelecimentos</string>
     <string name="title_activity_informar_cep_formulario">Informe o CEP</string>
@@ -12,5 +13,9 @@
     <string name="title_activity_lista_animais">Meus Pets</string>
     <string name="title_activity_formulario_cadastro_usuario">Cadastro</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_detalhe">Detalhes</string>
+    <string name="title_login">Login</string>
+    <string name="title_activity_formulario_cadastro_animal">Cadastro do Pet</string>
+    <string name="title_cesta_servicos">Itens da Cesta</string>
 
 </resources>

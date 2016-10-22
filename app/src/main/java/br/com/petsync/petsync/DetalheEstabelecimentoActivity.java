@@ -6,11 +6,18 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.util.HashMap;
 import java.util.List;
 
 import br.com.petsync.petsync.adapter.ServicoAdaptar;
@@ -23,6 +30,9 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
 
     private ListView listServicos;
     private Estabelecimento estabelecimento;
+    //User session manager class
+    UserSessionManager session;
+    private String endereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +41,7 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         estabelecimento = (Estabelecimento) intent.getSerializableExtra("estabelecimento");
+        endereco = (String) intent.getSerializableExtra("enderecoCliente");
 
         listServicos = (ListView) findViewById(R.id.detalhe_lista_servicos);
 
@@ -73,8 +84,57 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadServicos();
+        carregaInfo(estabelecimento);
     }
 
+    public void carregaInfo(Estabelecimento estabelecimento) {
+
+        TextView nome = (TextView) findViewById(R.id.tab_estab_info_nome);
+        nome.setText(estabelecimento.getName());
+
+        TextView responsavel = (TextView) findViewById(R.id.tab_estab_info_responsavel);
+        responsavel.setText(estabelecimento.getNameResponsible());
+
+        TextView endereco = (TextView) findViewById(R.id.tab_estab_info_endereco);
+        endereco.setText(estabelecimento.getAddress());
+
+        TextView cep = (TextView) findViewById(R.id.tab_estab_info_cep);
+        cep.setText(estabelecimento.getZipCode());
+
+        TextView cidade = (TextView) findViewById(R.id.tab_estab_info_cidade);
+        cidade.setText(estabelecimento.getCity());
+
+        TextView telefone = (TextView) findViewById(R.id.tab_estab_info_telefone);
+        telefone.setText(estabelecimento.getPhone());
+
+        TextView site = (TextView) findViewById(R.id.tab_estab_info_site);
+        site.setText(estabelecimento.getSite());
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detalhe_estabelecimento, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_detalhe_estab_map:
+                Intent intentMapa = new Intent(this, MapsActivity.class);
+                intentMapa.putExtra("estabelecimento", estabelecimento);
+                intentMapa.putExtra("enderecoCliente", endereco);
+                startActivity(intentMapa);
+                //Toast.makeText(DetalheEstabelecimentoActivity.this, "Teste MAPA", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menu_detalhe_estab_navigation:
+                Toast.makeText(DetalheEstabelecimentoActivity.this, "teste NAVIGATION", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     //Classe que busca os servicos
     public class SearchServicosTask extends AsyncTask {
 
@@ -112,4 +172,5 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
             listServicos.setAdapter(adapter);
         }
     } // fim da classe do asyncTask
+
 }

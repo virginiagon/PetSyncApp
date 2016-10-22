@@ -109,7 +109,8 @@ public class LoginActivity extends AppCompatActivity {
             //For testing purpose email, password is checked with static data
             if(this.email.equals(this.usuario.getEmail()) && passwordCriptografada.equals(this.usuario.getSenha()) && this.usuario.getStatus()) {
                 //Creating user login session
-                session.createUserLoginSession(String.valueOf(this.usuario.getCliente()), this.cliente.getNome(), this.usuario.getEmail());
+                //session.createUserLoginSession(String.valueOf(this.usuario.getCliente()), this.cliente.getNome(), this.usuario.getEmail());
+                session.createUserLoginSession(this.cliente, this.usuario);
 
                 //starting ListEstabelecimentosActivity
                 Intent i = new Intent(getApplicationContext(), ListEstabelecimentosActivity.class);

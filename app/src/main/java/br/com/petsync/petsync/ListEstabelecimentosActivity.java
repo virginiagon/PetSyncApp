@@ -3,8 +3,6 @@ package br.com.petsync.petsync;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -17,15 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.maps.android.SphericalUtil;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,7 +53,11 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         HashMap<String, String> user = session.getUserDetails();
         String name = user.get(UserSessionManager.KEY_NAME);
         String email = user.get(UserSessionManager.KEY_EMAIL);
-        this.clienteId = Long.valueOf(user.get(UserSessionManager.KEY_ID));
+        if(user.get(UserSessionManager.KEY_ID) != null) {
+            this.clienteId = Long.valueOf(user.get(UserSessionManager.KEY_ID));
+        }
+
+        final String enderecoCliente = this.montaEnderecoClinteDoBD(user);
 
         //lista estabelecimentos.
         listEstabelecimentos = (ListView) findViewById(R.id.lista_estabelcimentos);
@@ -71,6 +68,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
                 Estabelecimento estabelecimento = (Estabelecimento) listEstabelecimentos.getItemAtPosition(position);
                 Intent intentVaiParaDetalhe = new Intent(ListEstabelecimentosActivity.this, DetalheEstabelecimentoActivity.class);
                 intentVaiParaDetalhe.putExtra("estabelecimento", estabelecimento);
+                intentVaiParaDetalhe.putExtra("enderecoCliente", enderecoCliente);
                 startActivity(intentVaiParaDetalhe);
             }
         });
@@ -89,6 +87,7 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         TextView lblEmail = (TextView)header.findViewById(R.id.nav_header_email);
         lblName.setText(name);
         lblEmail.setText(email);
+
     }
 
 
@@ -110,6 +109,17 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         if(session.checkLogin())
             finish();
 
+    }
+
+    public String montaEnderecoClinteDoBD(HashMap<String, String> user) {
+        String endereco = user.get(UserSessionManager.KEY_ENDERECO);
+        String cidade = user.get(UserSessionManager.KEY_ESTADO);
+        String estado = user.get(UserSessionManager.KEY_CIDADE);
+        String cep = user.get(UserSessionManager.KEY_CEP);
+
+        String enderecoBD = endereco + ", " + cidade + ", " + estado;
+
+        return enderecoBD;
     }
 
     /**
@@ -150,8 +160,10 @@ public class ListEstabelecimentosActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_troca_metodo_busca) {
+            Intent intentTrocaBusca = new Intent(this, MetodosBuscaActivity.class);
+            startActivity(intentTrocaBusca);
+            //return true;
         }
 
         return super.onOptionsItemSelected(item);

@@ -47,12 +47,18 @@
         <activity
             android:name=".FormularioCadastroUsuarioActivity"
             android:label="@string/title_activity_formulario_cadastro_usuario" />
-        <activity android:name=".DetalheEstabelecimentoActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".DetalheEstabelecimentoActivity"
+            android:label="@string/title_detalhe"/>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_login"/>
         <activity
             android:name=".ListaAnimaisActivity"
             android:label="@string/title_activity_lista_animais" />
-        <activity android:name=".FormularioCadastroAnimalActivity" />
+        <activity
+            android:name=".FormularioCadastroAnimalActivity"
+            android:label="@string/title_activity_formulario_cadastro_animal"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -68,7 +74,12 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".DetalheServicoActivity"></activity>
+        <activity
+            android:name=".DetalheServicoActivity"
+            android:label="@string/title_detalhe"/>
+        <activity
+            android:name=".CestaDeServicosActivity"
+            android:label="@string/title_cesta_servicos"></activity>
     </application>
 
 </manifest>

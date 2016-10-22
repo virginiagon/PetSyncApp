@@ -21,7 +21,7 @@ public class MapsUtils {
         this.context = context;
     }
 
-    private LatLng pegaCoordenadaDoEndereco(String endereco) {
+    public LatLng pegaCoordenadaDoEndereco(String endereco) {
         LatLng posicao = null;
         try {
             Geocoder geocoder = new Geocoder(this.context);
