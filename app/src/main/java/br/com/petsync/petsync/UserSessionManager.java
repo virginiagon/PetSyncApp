@@ -77,7 +77,7 @@ public class UserSessionManager {
 
         editor.putString(KEY_ESTADO, cliente.getEstado());
 
-        editor.putString(KEY_CEP, cliente.getCep());
+        //editor.putString(KEY_CEP, cliente.getCep());
 
         //commit
         editor.commit();
@@ -154,4 +154,14 @@ public class UserSessionManager {
     public boolean isUserLoggedIn() {
         return pref.getBoolean(IS_USER_LOGIN, false);
     }
+
+    public void setCep(String cep) {
+        editor.putString(KEY_CEP, cep);
+        editor.commit();
+    }
+
+    public String getCep(){
+        return pref.getString(KEY_CEP, null);
+    }
+
 }

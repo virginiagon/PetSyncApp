@@ -36,6 +36,20 @@
             android:allowUndo="false"
             android:layout_marginTop="20dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Buscar pelo endereço do cadastro"
+            android:id="@+id/metodos_busca_end_cadastro"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:textColor="#3765fe"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:singleLine="false"
+            android:allowUndo="false" />
+
     </LinearLayout>
 
 </LinearLayout>

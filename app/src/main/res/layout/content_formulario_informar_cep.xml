@@ -23,7 +23,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/busca_por_cep"
         android:text="CEP"
         android:layout_marginTop="20dp" />
 
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CONFIRMAR"
-        android:id="@+id/button"
+        android:id="@+id/button_confirmar_cep"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:textSize="22dp" />

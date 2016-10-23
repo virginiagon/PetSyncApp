@@ -3,6 +3,7 @@ package br.com.petsync.petsync;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import br.com.petsync.petsync.map.DirectionFinder;
@@ -31,6 +33,9 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinesPaths = new ArrayList<>();
     private ProgressDialog progressDialog;
+    //User session manager class
+    UserSessionManager session;
+    private String cep;
 
     public MapFragment() {
     }
@@ -42,13 +47,19 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         //Prepara uma instancia do Google Maps
         getMapAsync(this); //this é o proprio fragment
 
+        //Session class instance
+        session = new UserSessionManager(getContext());
+
+        HashMap<String, String> user = session.getUserDetails();
+        this.cep = session.getCep();
+        Toast.makeText(getContext(), "Session = " + session.getCep(), Toast.LENGTH_LONG).show();
+
         Bundle extras = getActivity().getIntent().getExtras();
         this.estabelecimento = (Estabelecimento) extras.getSerializable("estabelecimento");
         this.enderecoCliente = (String) extras.getSerializable("enderecoCliente");
 
-
-
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -59,7 +70,11 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         String enderecoEstabelecimento = this.estabelecimento.getAddress() + ", " + this.estabelecimento.getCity() + ", " + this.estabelecimento.getState();
 
         try {
-            new DirectionFinder(this, enderecoCliente, enderecoEstabelecimento).execute();
+            if(this.cep == null) {
+                new DirectionFinder(this, enderecoCliente, enderecoEstabelecimento).execute();
+            }else {
+                new DirectionFinder(this, this.cep, enderecoEstabelecimento).execute();
+            }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
