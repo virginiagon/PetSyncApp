@@ -3,6 +3,7 @@ package br.com.petsync.petsync;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -129,7 +130,10 @@ public class DetalheEstabelecimentoActivity extends AppCompatActivity {
                 //Toast.makeText(DetalheEstabelecimentoActivity.this, "Teste MAPA", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menu_detalhe_estab_navigation:
-                Toast.makeText(DetalheEstabelecimentoActivity.this, "teste NAVIGATION", Toast.LENGTH_SHORT).show();
+                Intent intentGoogleMapa = new Intent(Intent.ACTION_VIEW);
+                intentGoogleMapa.setData(Uri.parse("geo:0,0?q=" + this.estabelecimento.getAddress() + ", " + this.estabelecimento.getCity() + ", " + this.estabelecimento.getState()));
+                startActivity(intentGoogleMapa);
+                //Toast.makeText(DetalheEstabelecimentoActivity.this, "teste NAVIGATION", Toast.LENGTH_SHORT).show();
                 break;
         }
 

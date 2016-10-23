@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Mult-e\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
-        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.0_b119276fe009cf4f9b3a58035d54c39e72e1fd3a\classes.dex" />
-    </item>
-    <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.4.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-8.4.0_ba3ed3569b574cf01ca2bd4c9cfc90c2fb174966\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Mult-e\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.0_b119276fe009cf4f9b3a58035d54c39e72e1fd3a\classes.dex" />
     </item>
     <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
@@ -72,18 +72,18 @@
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-8.4.0_f4c85b0d6ade9b554b0b2ead4f8dfb58acaeb009\classes.dex" />
     </item>
     <item
-        jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.4.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
-        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-8.4.0_9d9435b3f2a04a21ff6cb596e4eb814c614921db\classes.dex" />
-    </item>
-    <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.2.0_34eccd9dc5c920bb6daeba308204fabd544916c4\classes.dex" />
+    </item>
+    <item
+        jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-8.4.0_9d9435b3f2a04a21ff6cb596e4eb814c614921db\classes.dex" />
     </item>
     <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.android.support\design\23.2.0\jars\classes.jar"
@@ -110,15 +110,8 @@
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="64f8e2647f5650e6326c6d8b097afd2a47dae862">
+        sha1="7dcbe8ff4de8fd3b156ce1089433c87bad96e46f">
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_71494f92b9c7fdabcfd8ca6a2873c46e354c3ed9\classes.dex" />
-    </item>
-    <item
-        jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
-        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.4.0_4a844c6cc44c3e24d9bb678ddd86f6efdd116618\classes.dex" />
     </item>
     <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.4.0\jars\classes.jar"
@@ -126,6 +119,13 @@
         revision="23.0.2"
         sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-8.4.0_0377d84fea43a4df9e40ebeb76de2f822e590fd4\classes.dex" />
+    </item>
+    <item
+        jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.4.0_4a844c6cc44c3e24d9bb678ddd86f6efdd116618\classes.dex" />
     </item>
     <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.4.0\jars\classes.jar"
@@ -142,13 +142,6 @@
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-8.4.0_7a876facde99ab5b603af591c0bd2c0eb8e2a43b\classes.dex" />
     </item>
     <item
-        jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
-        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.0_b3fc01769e91124652730b81b7888c84ee63dfac\classes.dex" />
-    </item>
-    <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.4.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.2"
@@ -156,10 +149,17 @@
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-8.4.0_63d7fcb9c56663ee7fec921f99171e4b5099fd9b\classes.dex" />
     </item>
     <item
+        jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.0_b3fc01769e91124652730b81b7888c84ee63dfac\classes.dex" />
+    </item>
+    <item
         jar="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="94cbbc7307df8220501c806fa165fc833ba85d55">
+        sha1="beb6c8aadca8baffbc142ca8ff0cac24dd086f2f">
         <dex dex="C:\AndroidStudioProjects\PetSyncApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3f16443ebcf5668258b18a87e34a9bd6a336a5c0\classes.dex" />
     </item>
     <item
