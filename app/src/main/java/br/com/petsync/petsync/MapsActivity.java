@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.GoogleMap;
 
-import br.com.petsync.petsync.model.Cliente;
 import br.com.petsync.petsync.model.Estabelecimento;
 
 public class MapsActivity extends AppCompatActivity {

@@ -4,9 +4,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
-/**
- * Created by Mult-e on 22/10/2016.
- */
 public class Route {
 
     public Distance distance;

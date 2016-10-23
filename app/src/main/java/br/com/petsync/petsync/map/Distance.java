@@ -1,8 +1,5 @@
 package br.com.petsync.petsync.map;
 
-/**
- * Created by Mult-e on 22/10/2016.
- */
 public class Distance {
 
     public String text;

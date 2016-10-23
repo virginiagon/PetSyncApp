@@ -19,9 +19,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Mult-e on 22/10/2016.
- */
 public class DirectionFinder {
 
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
